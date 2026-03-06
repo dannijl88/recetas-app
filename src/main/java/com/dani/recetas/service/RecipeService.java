@@ -16,4 +16,22 @@ public class RecipeService {
     public List<Recipe> getAllRecipes(){
         return recipeRepository.findAll();
     }
+
+    public Recipe createRecipe(Recipe recipe){
+        return recipeRepository.save(recipe);
+    }
+
+    public Recipe updateRecipe(Long id, Recipe recipe){
+       Recipe recipeBD = recipeRepository.findById(id).orElseThrow();
+       recipeBD.setTitle(recipe.getTitle());
+       recipeBD.setDescription(recipe.getDescription());
+       recipeBD.setPreparationTime(recipe.getPreparationTime());
+       recipeBD.setIngredients(recipe.getIngredients());
+       return recipeRepository.save(recipeBD);
+    }
+
+    public void deleteRecipe(Long id){
+        Recipe recipeBD = recipeRepository.findById(id).orElseThrow();
+        recipeRepository.delete(recipeBD);
+    }
 }

@@ -3,9 +3,7 @@ package com.dani.recetas.controller;
 import com.dani.recetas.model.Recipe;
 import com.dani.recetas.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,20 @@ public class RecipeController {
     @GetMapping
     public List<Recipe> getAllRecipes(){
         return recipeService.getAllRecipes();
+    }
+
+    @PostMapping
+    public Recipe createRecipe(@RequestBody Recipe recipe){
+        return recipeService.createRecipe(recipe);
+    }
+
+    @PutMapping("/{id}")
+    public Recipe updateRecipe(@RequestBody Recipe recipe, @PathVariable Long id){
+        return recipeService.updateRecipe(id, recipe);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteRecipe(@PathVariable Long id){
+        recipeService.deleteRecipe(id);
     }
 }
