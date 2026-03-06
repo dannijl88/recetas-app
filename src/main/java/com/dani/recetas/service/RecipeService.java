@@ -1,5 +1,6 @@
 package com.dani.recetas.service;
 
+import com.dani.recetas.exception.RecipeNotFoundException;
 import com.dani.recetas.model.Recipe;
 import com.dani.recetas.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class RecipeService {
     }
 
     public Recipe updateRecipe(Long id, Recipe recipe){
-       Recipe recipeBD = recipeRepository.findById(id).orElseThrow();
+       Recipe recipeBD = recipeRepository.findById(id).orElseThrow(() -> new RecipeNotFoundException("Recipe not found"));
        recipeBD.setTitle(recipe.getTitle());
        recipeBD.setDescription(recipe.getDescription());
        recipeBD.setPreparationTime(recipe.getPreparationTime());
@@ -31,7 +32,7 @@ public class RecipeService {
     }
 
     public void deleteRecipe(Long id){
-        Recipe recipeBD = recipeRepository.findById(id).orElseThrow();
+        Recipe recipeBD = recipeRepository.findById(id).orElseThrow(() -> new RecipeNotFoundException("Recipe not found"));
         recipeRepository.delete(recipeBD);
     }
 }

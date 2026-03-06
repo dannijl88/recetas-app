@@ -1,5 +1,6 @@
 package com.dani.recetas.service;
 
+import com.dani.recetas.exception.UserNotFoundException;
 import com.dani.recetas.model.User;
 import com.dani.recetas.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UserService {
     }
 
     public User updateUser(User user, Long id){
-        User userBD = userRepository.findById(id).orElseThrow();
+        User userBD = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         userBD.setUsername(user.getUsername());
         userBD.setEmail(user.getEmail());
         userBD.setPassword(user.getPassword());
@@ -30,7 +31,7 @@ public class UserService {
     }
 
     public void deleteUser(Long id){
-        User userBD = userRepository.findById(id).orElseThrow();
+        User userBD = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         userRepository.delete(userBD);
     }
 }
