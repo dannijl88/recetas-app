@@ -16,4 +16,19 @@ public class CategoryService {
     public List<Category> getAllCategories(){
         return categoryRepository.findAll();
     }
+
+    public Category createCategory(Category category){
+        return categoryRepository.save(category);
+    }
+
+    public Category updateCategory(Category category, Long id){
+        Category categoryBD = categoryRepository.findById(id).orElseThrow();
+        categoryBD.setName(category.getName());
+        return categoryRepository.save(categoryBD);
+    }
+
+    public void deleteCategory(Long id){
+        Category categoryBD = categoryRepository.findById(id).orElseThrow();
+        categoryRepository.delete(categoryBD);
+    }
 }
