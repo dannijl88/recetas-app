@@ -18,6 +18,11 @@ public class RecipeService {
         return recipeRepository.findAll();
     }
 
+    public Recipe getById(Long id){
+        Recipe recipeBD = recipeRepository.findById(id).orElseThrow(() -> new RecipeNotFoundException("Recipe not found"));
+        return recipeBD;
+    }
+
     public Recipe createRecipe(Recipe recipe){
         return recipeRepository.save(recipe);
     }

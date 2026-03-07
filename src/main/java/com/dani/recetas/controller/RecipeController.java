@@ -19,6 +19,11 @@ public class RecipeController {
         return recipeService.getAllRecipes();
     }
 
+    @GetMapping("/{id}")
+    public Recipe getRecipeById(@PathVariable Long id){
+        return recipeService.getById(id);
+    }
+
     @PostMapping
     public Recipe createRecipe(@RequestBody Recipe recipe){
         return recipeService.createRecipe(recipe);

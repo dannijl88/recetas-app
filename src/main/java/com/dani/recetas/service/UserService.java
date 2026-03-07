@@ -18,6 +18,11 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User getById(Long id){
+        User userBD = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return userBD;
+    }
+
     public User createUser(User user){
         return userRepository.save(user);
     }

@@ -3,6 +3,7 @@ package com.dani.recetas.service;
 import com.dani.recetas.exception.CategoryNotFoundException;
 import com.dani.recetas.exception.UserNotFoundException;
 import com.dani.recetas.model.Category;
+import com.dani.recetas.model.User;
 import com.dani.recetas.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,11 @@ public class CategoryService {
 
     public List<Category> getAllCategories(){
         return categoryRepository.findAll();
+    }
+
+    public Category getById(Long id){
+        Category categoryBD = categoryRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Category not found"));
+        return categoryBD;
     }
 
     public Category createCategory(Category category){
