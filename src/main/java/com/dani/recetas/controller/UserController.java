@@ -1,5 +1,7 @@
 package com.dani.recetas.controller;
 
+import com.dani.recetas.dto.UserRequestDTO;
+import com.dani.recetas.dto.UserResponseDTO;
 import com.dani.recetas.model.User;
 import com.dani.recetas.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +17,22 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers(){
+    public List<UserResponseDTO> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id){
+    public UserResponseDTO getUserById(@PathVariable Long id){
         return userService.getById(id);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user){
+    public UserResponseDTO createUser(@RequestBody UserRequestDTO user){
         return userService.createUser(user);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody User user, @PathVariable Long id){
+    public UserResponseDTO updateUser(@RequestBody UserRequestDTO user, @PathVariable Long id){
         return userService.updateUser(user, id);
     }
 

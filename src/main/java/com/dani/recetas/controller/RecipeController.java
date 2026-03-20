@@ -1,5 +1,7 @@
 package com.dani.recetas.controller;
 
+import com.dani.recetas.dto.RecipeRequestDTO;
+import com.dani.recetas.dto.RecipeResponseDTO;
 import com.dani.recetas.model.Recipe;
 import com.dani.recetas.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +17,23 @@ public class RecipeController {
     private RecipeService recipeService;
 
     @GetMapping
-    public List<Recipe> getAllRecipes(){
+    public List<RecipeResponseDTO> getAllRecipes(){
         return recipeService.getAllRecipes();
     }
 
     @GetMapping("/{id}")
-    public Recipe getRecipeById(@PathVariable Long id){
+    public RecipeResponseDTO getRecipeById(@PathVariable Long id){
         return recipeService.getById(id);
     }
 
     @PostMapping
-    public Recipe createRecipe(@RequestBody Recipe recipe){
+    public RecipeResponseDTO createRecipe(@RequestBody RecipeRequestDTO recipe){
         return recipeService.createRecipe(recipe);
     }
 
     @PutMapping("/{id}")
-    public Recipe updateRecipe(@RequestBody Recipe recipe, @PathVariable Long id){
-        return recipeService.updateRecipe(id, recipe);
+    public RecipeResponseDTO updateRecipe(@RequestBody RecipeRequestDTO recipe, @PathVariable Long id){
+        return recipeService.updateRecipe(recipe, id);
     }
 
     @DeleteMapping("/{id}")
