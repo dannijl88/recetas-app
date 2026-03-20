@@ -4,6 +4,7 @@ import com.dani.recetas.dto.RecipeRequestDTO;
 import com.dani.recetas.dto.RecipeResponseDTO;
 import com.dani.recetas.model.Recipe;
 import com.dani.recetas.service.RecipeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,12 +28,12 @@ public class RecipeController {
     }
 
     @PostMapping
-    public RecipeResponseDTO createRecipe(@RequestBody RecipeRequestDTO recipe){
+    public RecipeResponseDTO createRecipe(@RequestBody @Valid RecipeRequestDTO recipe){
         return recipeService.createRecipe(recipe);
     }
 
     @PutMapping("/{id}")
-    public RecipeResponseDTO updateRecipe(@RequestBody RecipeRequestDTO recipe, @PathVariable Long id){
+    public RecipeResponseDTO updateRecipe(@RequestBody @Valid RecipeRequestDTO recipe, @PathVariable Long id){
         return recipeService.updateRecipe(recipe, id);
     }
 

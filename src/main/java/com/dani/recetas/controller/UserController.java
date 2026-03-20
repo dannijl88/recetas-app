@@ -4,6 +4,7 @@ import com.dani.recetas.dto.UserRequestDTO;
 import com.dani.recetas.dto.UserResponseDTO;
 import com.dani.recetas.model.User;
 import com.dani.recetas.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,12 +28,12 @@ public class UserController {
     }
 
     @PostMapping
-    public UserResponseDTO createUser(@RequestBody UserRequestDTO user){
+    public UserResponseDTO createUser(@RequestBody @Valid UserRequestDTO user){
         return userService.createUser(user);
     }
 
     @PutMapping("/{id}")
-    public UserResponseDTO updateUser(@RequestBody UserRequestDTO user, @PathVariable Long id){
+    public UserResponseDTO updateUser(@RequestBody @Valid UserRequestDTO user, @PathVariable Long id){
         return userService.updateUser(user, id);
     }
 
