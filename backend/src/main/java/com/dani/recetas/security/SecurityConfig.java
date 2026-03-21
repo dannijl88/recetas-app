@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -29,12 +30,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtUtils jwtUtils, AuthenticationManager authenticationManager) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtUtils jwtUtils, AuthenticationManager authenticationManager, CorsConfigurationSource corsConfigurationSource) throws Exception{
 
         JwtAuthenticationFilter authFilter = new JwtAuthenticationFilter(authenticationManager, jwtUtils);
         authFilter.setFilterProcessesUrl("/api/auth/login");
 
         http.csrf(csrf -> csrf.disable());
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource));
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**", "/api/users").permitAll().anyRequest().authenticated());
         http.addFilter(authFilter);
