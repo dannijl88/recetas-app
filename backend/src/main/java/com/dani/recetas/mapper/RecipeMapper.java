@@ -23,6 +23,14 @@ public class RecipeMapper {
     }
 
     public static RecipeResponseDTO toDTO(Recipe recipe){
-        return new RecipeResponseDTO(recipe.getId(), recipe.getTitle(), recipe.getDescription(), recipe.getIngredients(), recipe.getPreparationTime(), recipe.getUser().getUsername(), recipe.getCategory().stream().map(Category::getName).collect(Collectors.toList()));
+        return new RecipeResponseDTO(
+                recipe.getId(),
+                recipe.getTitle(),
+                recipe.getDescription(),
+                recipe.getIngredients(),
+                recipe.getPreparationTime(),
+                recipe.getUser() != null ? recipe.getUser().getUsername() : null,
+                recipe.getCategory().stream().map(Category::getName).collect(Collectors.toList())
+        );
     }
 }

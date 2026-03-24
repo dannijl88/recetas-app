@@ -10,6 +10,7 @@ export const Login = () => {
 
     const handleSubmit = async () => {
         const token = await login(username, password);
+        console.log(token)
         localStorage.setItem("token", token);
         navigate("/");
     }
