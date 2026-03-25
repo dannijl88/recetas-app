@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import type { Recipe } from "../types/index"
 import { getAllRecipes } from "../services/recipeService"
+import { useNavigate } from "react-router-dom"
 
 export const Home = () => {
 
+    const navigate = useNavigate();
     const [recipes, setRecipes] = useState<Recipe[]>([])
 
     useEffect(() => {
@@ -22,7 +24,7 @@ export const Home = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {recipes.map(recipe => (
-                        <div key={recipe.id} className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <div key={recipe.id} onClick={() => navigate(`/recipes/${recipe.id}`)} className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer">
                             <h2 className="text-xl font-bold text-white mb-2">{recipe.title}</h2>
                             <p className="text-gray-400 text-sm mb-4 line-clamp-2">{recipe.description}</p>
                             <div className="flex justify-between items-center">
