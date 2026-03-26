@@ -18,3 +18,12 @@ export interface Category{
     id: number;
     name: string;
 }
+
+export interface RecipeRequest {
+    title: string;
+    description: string;
+    ingredients: string;
+    preparationTime: string;
+    userId: number;
+    categoryIds: number[];
+}

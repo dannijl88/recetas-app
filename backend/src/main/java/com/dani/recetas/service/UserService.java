@@ -21,23 +21,29 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public List<UserResponseDTO> getAllUsers(){
+    public List<UserResponseDTO> getAllUsers() {
         return userRepository.findAll().stream().map(UserMapper::toDTO).collect(Collectors.toList());
     }
 
-    public UserResponseDTO getById(Long id){
+    public UserResponseDTO getById(Long id) {
         User userBD = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         return UserMapper.toDTO(userBD);
     }
 
-    public UserResponseDTO createUser(UserRequestDTO dto){
+    public UserResponseDTO getByUsername(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        return UserMapper.toDTO(user);
+    }
+
+    public UserResponseDTO createUser(UserRequestDTO dto) {
         User user = UserMapper.toEntity(dto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
         return UserMapper.toDTO(savedUser);
     }
 
-    public UserResponseDTO updateUser(UserRequestDTO dto, Long id){
+    public UserResponseDTO updateUser(UserRequestDTO dto, Long id) {
         User user = UserMapper.toEntity(dto);
         User userBD = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         userBD.setUsername(user.getUsername());
@@ -47,7 +53,7 @@ public class UserService {
         return UserMapper.toDTO(updatedUser);
     }
 
-    public void deleteUser(Long id){
+    public void deleteUser(Long id) {
         User userBD = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         userRepository.delete(userBD);
     }

@@ -17,7 +17,7 @@ export const Home = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-4xl font-bold text-white">Recetas</h1>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                    <button onClick={() => navigate('/recipes/create')} className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
                         + Nueva receta
                     </button>
                 </div>

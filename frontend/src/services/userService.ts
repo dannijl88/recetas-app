@@ -11,6 +11,11 @@ export const getUserById = async (id: number): Promise<User> => {
     return response.data;
 }
 
+export const getCurrentUser = async (): Promise<User> => {
+    const response = await api.get('/users/me');
+    return response.data;
+}
+
 export const createUser = async (data: Partial<User>): Promise<User> => {
     const response = await api.post("/users", data);
     return response.data;
