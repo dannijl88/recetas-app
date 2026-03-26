@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getById } from '../services/recipeService';
+import { deleteRecipe, getById } from '../services/recipeService';
 import type { Recipe } from '../types';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/NavBar';
@@ -45,11 +45,19 @@ export const RecipeDetail = () => {
                         <h2 className="text-lg font-semibold text-white mb-2">Ingredientes</h2>
                         <p className="text-gray-400">{recipe.ingredients}</p>
                     </div>
-                    <div>
+                    <div className='flex gap-3'>
                         <button
                             onClick={() => navigate(`/recipes/edit/${id}`)}
                             className="my-5 px-4 py-2 rounded-lg cursor-pointer text-white bg-orange-500 hover:bg-orange-600 transition-colors text-sm ">
                             Editar receta
+                        </button>
+                        <button
+                            onClick={() => {
+                                deleteRecipe(Number(id))
+                                navigate("/");
+                            }}
+                            className="my-5 px-4 py-2 rounded-lg cursor-pointer text-white bg-orange-500 hover:bg-orange-600 transition-colors text-sm ">
+                            Borrar receta
                         </button>
                     </div>
                 </div>

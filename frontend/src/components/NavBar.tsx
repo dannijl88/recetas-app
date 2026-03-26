@@ -15,7 +15,7 @@ export const Navbar = () => {
                 <span 
                     onClick={() => navigate('/')}
                     className="text-xl font-bold text-orange-500 cursor-pointer">
-                    🍳 Recetas
+                    DevRecipes
                 </span>
 
                 <div className="flex items-center gap-4">
