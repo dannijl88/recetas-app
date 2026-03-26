@@ -45,6 +45,13 @@ export const RecipeDetail = () => {
                         <h2 className="text-lg font-semibold text-white mb-2">Ingredientes</h2>
                         <p className="text-gray-400">{recipe.ingredients}</p>
                     </div>
+                    <div>
+                        <button
+                            onClick={() => navigate(`/recipes/edit/${id}`)}
+                            className="my-5 px-4 py-2 rounded-lg cursor-pointer text-white bg-orange-500 hover:bg-orange-600 transition-colors text-sm ">
+                            Editar receta
+                        </button>
+                    </div>
                 </div>
             )}
         </div>

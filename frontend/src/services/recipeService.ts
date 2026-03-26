@@ -16,7 +16,7 @@ export const createRecipe = async (data: RecipeRequest): Promise<Recipe> => {
     return response.data;
 }
 
-export const updateRecipe = async (data: Partial<Recipe>, id: number) => {
+export const updateRecipe = async (data: RecipeRequest, id: number): Promise<Recipe> => {
     const response = await api.put('/recipes/' + id, data);
     return response.data;
 }
