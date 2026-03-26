@@ -7,12 +7,16 @@ export const Login = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleSubmit = async () => {
-        const token = await login(username, password);
-        console.log(token)
-        localStorage.setItem("token", token);
-        navigate("/");
+        try {
+            const token = await login(username, password);
+            localStorage.setItem("token", token);
+            navigate("/");
+        } catch (e) {
+            setError("Usuario o contraseña incorrectos")
+        }
     }
 
     return (
@@ -43,7 +47,7 @@ export const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-
+                    {error && <p className="text-red-500 text-sm text-center">{error}</p>}
                     <button  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-colors mt-2"
                     onClick={ handleSubmit }>
                         Iniciar sesión
