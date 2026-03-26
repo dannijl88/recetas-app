@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { createRecipe } from "../services/recipeService"
 import { getCurrentUser } from "../services/userService"
+import { Navbar } from "../components/NavBar"
 
 export const CreateRecipe = () => {
 
@@ -19,6 +20,7 @@ export const CreateRecipe = () => {
 
     return (
     <div className="min-h-screen bg-gray-950 p-8">
+        <Navbar />
         <div className="max-w-2xl mx-auto">
             <button
                 onClick={() => navigate(-1)}

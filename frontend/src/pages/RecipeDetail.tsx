@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getById } from '../services/recipeService';
 import type { Recipe } from '../types';
 import { useNavigate } from 'react-router-dom';
+import { Navbar } from '../components/NavBar';
 
 export const RecipeDetail = () => {
 
@@ -15,7 +16,8 @@ export const RecipeDetail = () => {
     }, [])
 
     return (
-    <div className="min-h-screen bg-gray-950 p-8">
+    <div className="min-h-screen bg-gray-950 px-8">
+        <Navbar />
         <div className="max-w-3xl mx-auto">
             <button 
                 onClick={() => navigate(-1)}

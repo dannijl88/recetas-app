@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import type { Recipe } from "../types/index"
 import { getAllRecipes } from "../services/recipeService"
 import { useNavigate } from "react-router-dom"
+import { Navbar } from "../components/NavBar"
 
 export const Home = () => {
 
@@ -13,13 +14,11 @@ export const Home = () => {
     }, [])
 
     return (
-        <div className="min-h-screen bg-gray-950 p-8">
+        <div className="min-h-screen bg-gray-950 px-9">
+            <Navbar />
             <div className="max-w-6xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-4xl font-bold text-white">Recetas</h1>
-                    <button onClick={() => navigate('/recipes/create')} className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
-                        + Nueva receta
-                    </button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
