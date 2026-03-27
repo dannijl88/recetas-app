@@ -7,7 +7,8 @@ import { Footer } from "../components/Footer"
 
 export const Home = () => {
 
-    const [recipes, setRecipes] = useState<Recipe[]>([])
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         getAllRecipes().then(data => setRecipes(data))
@@ -25,8 +26,16 @@ export const Home = () => {
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-4xl font-bold text-white">Recetas</h1>
                 </div>
+                <div className="my-10">
+                    <input
+                        type="text"
+                        placeholder="Buscar"
+                        className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {recipes.map(recipe => (
+                    {recipes.filter((recipe) => recipe.title.toLowerCase().includes(search.toLowerCase())).map(recipe => (
                         <RecipeCard onDelete={handleDelete} recipe={recipe}/>
                     ))}
                 </div>
