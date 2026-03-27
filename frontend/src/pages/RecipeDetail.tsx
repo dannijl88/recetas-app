@@ -4,6 +4,7 @@ import { deleteRecipe, getById } from '../services/recipeService';
 import type { Recipe } from '../types';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/NavBar';
+import { Footer } from '../components/Footer';
 
 export const RecipeDetail = () => {
 
@@ -16,9 +17,9 @@ export const RecipeDetail = () => {
     }, [])
 
     return (
-    <div className="min-h-screen bg-gray-950 px-8">
+    <div className="min-h-screen bg-gray-950 px-8 flex flex-col">
         <Navbar />
-        <div className="max-w-3xl mx-auto">
+        <div className="flex-1 max-w-3xl mx-auto">
             <button 
                 onClick={() => navigate(-1)}
                 className="text-gray-400 hover:text-white mb-6 flex items-center gap-2 transition-colors">
@@ -63,6 +64,7 @@ export const RecipeDetail = () => {
                 </div>
             )}
         </div>
+        <Footer />
     </div>
 )
 }

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getById, updateRecipe } from "../services/recipeService"
 import { getCurrentUser } from "../services/userService"
 import { Navbar } from "../components/NavBar"
+import { Footer } from "../components/Footer"
 
 export const EditRecipe = () => {
 
@@ -96,6 +97,7 @@ export const EditRecipe = () => {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 )
 }

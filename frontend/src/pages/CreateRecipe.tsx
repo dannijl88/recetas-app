@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { createRecipe } from "../services/recipeService"
 import { getCurrentUser } from "../services/userService"
 import { Navbar } from "../components/NavBar"
+import { Footer } from "../components/Footer"
 
 export const CreateRecipe = () => {
 
@@ -87,6 +88,7 @@ export const CreateRecipe = () => {
                         Crear receta
                     </button>
                 </div>
+                <Footer />
             </div>
         </div>
     </div>
