@@ -1,6 +1,8 @@
 # 🍳 Recetas App
 
-Aplicación web fullstack de gestión de recetas de cocina. Permite a los usuarios registrarse, publicar sus propias recetas, explorar las de otros usuarios y gestionar su perfil.
+Aplicación web fullstack de gestión de recetas de cocina desarrollada por [@dannijl88](https://github.com/dannijl88). Permite a los usuarios registrarse, publicar sus propias recetas, explorar las de otros usuarios y gestionar su perfil.
+
+🔗 **Repositorio:** [github.com/dannijl88/recetas-app](https://github.com/dannijl88/recetas-app)
 
 ## 🚀 Tecnologías
 
@@ -139,3 +141,7 @@ Authorization: Bearer <token>
 ```
 
 El token se obtiene al hacer login y expira en 24 horas.
+
+## 👨‍💻 Autor
+
+Desarrollado por [@dannijl88](https://github.com/dannijl88)
