@@ -13,12 +13,16 @@ export const CreateRecipe = () => {
     const [ingredients, setIngredients] = useState("");
     const [preparationTime, setPreparationTime] = useState("");
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState(false);
 
     const handleSumbit = async () => {
         try {
             const currentUser = await getCurrentUser();
             await createRecipe({title, description, ingredients, preparationTime, userId: currentUser.id, categoryIds: []});
-            navigate('/');
+            setSuccess(true);
+            setTimeout(() => {
+                navigate('/');
+            }, 3000);
         } catch (e) {
             setError("Error al crear la receta");
         }
@@ -82,6 +86,7 @@ export const CreateRecipe = () => {
                         />
                     </div>
                     {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+                    {success && <p className="text-green-500 text-sm text-center">Receta creada con éxito</p>}
                     <button
                         onClick={handleSumbit}
                         className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-colors mt-2">
