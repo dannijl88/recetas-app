@@ -29,9 +29,9 @@ export const Profile = () => {
         }  
 
     return (
-        <div className="min-h-screen bg-gray-950 px-9">
+        <div className="min-h-screen bg-gray-950 flex flex-col">
             <Navbar />
-            <div className="max-w-3xl mx-auto mt-8">
+            <div className="max-w-3xl mx-auto mt-8 flex-1">
                 <button
                     onClick={() => navigate(-1)}
                     className="text-gray-400 hover:text-white mb-6 flex items-center gap-2 transition-colors">
@@ -57,8 +57,8 @@ export const Profile = () => {
                         <p className="text-gray-500 col-span-full">Aún no has creado ninguna receta.</p>
                     )}
                 </div>
-                <Footer />
             </div>
+            <Footer />
         </div>
     )
 }

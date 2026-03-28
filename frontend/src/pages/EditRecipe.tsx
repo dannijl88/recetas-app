@@ -32,9 +32,9 @@ export const EditRecipe = () => {
     }
 
     return (
-    <div className="min-h-screen bg-gray-950 p-8">
+    <div className="min-h-screen bg-gray-950 flex flex-col">
         <Navbar />
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto w-full flex-1">
             <button
                 onClick={() => navigate(-1)}
                 className="text-gray-400 hover:text-white mb-6 flex items-center gap-2 transition-colors">

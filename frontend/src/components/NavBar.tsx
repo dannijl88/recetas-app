@@ -10,7 +10,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="max-w-6xl mx-auto w-full bg-gray-900 border-b border-gray-800 px-8 py-4 mb-6 rounded-2xl">
+        <nav className="max-w-6xl mx-auto w-full bg-gray-900 border-b border-gray-800 px-8 py-4 mb-6 rounded-b-2xl">
             <div className="max-w-6xl mx-auto flex justify-between items-center">
                 <span 
                     onClick={() => navigate('/')}

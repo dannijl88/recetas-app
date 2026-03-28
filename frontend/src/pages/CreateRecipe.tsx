@@ -25,9 +25,9 @@ export const CreateRecipe = () => {
     }
 
     return (
-    <div className="min-h-screen bg-gray-950 p-8">
+    <div className="min-h-screen bg-gray-950 flex flex-col">
         <Navbar />
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto flex-1 w-full">
             <button
                 onClick={() => navigate(-1)}
                 className="text-gray-400 hover:text-white mb-6 flex items-center gap-2 transition-colors">
@@ -88,9 +88,9 @@ export const CreateRecipe = () => {
                         Crear receta
                     </button>
                 </div>
-                <Footer />
             </div>
         </div>
+        <Footer />
     </div>
 )
 }
