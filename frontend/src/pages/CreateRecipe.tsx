@@ -22,7 +22,7 @@ export const CreateRecipe = () => {
             setSuccess(true);
             setTimeout(() => {
                 navigate('/');
-            }, 3000);
+            }, 1500);
         } catch (e) {
             setError("Error al crear la receta");
         }

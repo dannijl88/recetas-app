@@ -18,7 +18,9 @@ export const RecipeCard = ({ recipe, onDelete }: Props) => {
             <button
                 onClick={(e) => {
                     e.stopPropagation();
-                    onDelete(recipe.id);
+                    if (confirm("¿Estás seguro de que quieres eliminar esta receta?")) {
+                        onDelete(recipe.id);
+                    }
                 }}
                 className="absolute top-4 right-4 w-6 h-6 bg-red-500 hover:bg-red-600 cursor-pointer text-white rounded-full flex items-center justify-center text-sm transition-colors">
                 −
