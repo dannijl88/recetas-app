@@ -23,28 +23,16 @@ export const Home = () => {
 
     return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-gray-950">
-        <NavBar />
+        <Navbar />
         <div className="max-w-7xl mx-auto px-6 pt-28 pb-12">
-            <h2 className="text-3xl font-bold text-white mb-8">🔥 Películas populares</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {movies.map(movie => (
-                    <div
-                        key={movie.id}
-                        onClick={() => navigate(`/movie/${movie.id}`)}
-                        className="group cursor-pointer rounded-xl overflow-hidden backdrop-blur-sm bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all hover:scale-105">
-                        <img
-                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title}
-                            className="w-full object-cover"
-                        />
-                        <div className="p-3">
-                            <h3 className="text-white text-sm font-semibold line-clamp-1">{movie.title}</h3>
-                            <p className="text-purple-400 text-xs mt-1">⭐ {movie.vote_average.toFixed(1)}</p>
-                        </div>
-                    </div>
+            <h2 className="text-3xl font-bold text-white mb-8">🍳 Recetas</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                {recipes.map(recipe => (
+                    <RecipeCard key={recipe.id} recipe={recipe} onDelete={handleDelete} />
                 ))}
             </div>
         </div>
+        <Footer />
     </div>
 )
 }
