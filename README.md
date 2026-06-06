@@ -4,6 +4,7 @@ Aplicación web fullstack de gestión de recetas de cocina desarrollada por [@da
 
 🔗 **Demo:** [recetas-app-4phf.vercel.app](https://recetas-app-4phf.vercel.app)
 🔗 **Repositorio:** [github.com/dannijl88/recetas-app](https://github.com/dannijl88/recetas-app)
+☁️ **Backend:** Railway · **Frontend:** Vercel
 
 
 ## 🚀 Tecnologías
