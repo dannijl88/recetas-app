@@ -2,7 +2,9 @@
 
 Aplicación web fullstack de gestión de recetas de cocina desarrollada por [@dannijl88](https://github.com/dannijl88). Permite a los usuarios registrarse, publicar sus propias recetas, explorar las de otros usuarios y gestionar su perfil.
 
+🔗 **Demo:** [recetas-app-4phf.vercel.app](https://recetas-app-4phf.vercel.app)
 🔗 **Repositorio:** [github.com/dannijl88/recetas-app](https://github.com/dannijl88/recetas-app)
+
 
 ## 🚀 Tecnologías
 
@@ -59,7 +61,7 @@ recetas-app/
 ## ⚙️ Instalación y uso
 
 ### Requisitos previos
-- Java 25
+- Java 21
 - Node.js 22+
 - MySQL 8
 
