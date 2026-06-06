@@ -22,41 +22,29 @@ export const Home = () => {
     }  
 
     return (
-        <div className="min-h-screen bg-gray-950 flex flex-col">
-            <Navbar />
-            <div className="max-w-6xl mx-auto flex-1">
-                <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-4xl font-bold text-white">Recetas</h1>
-                </div>
-                <div className="my-10">
-                    <input
-                        type="text"
-                        placeholder="Buscar"
-                        className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {recipes.filter((recipe) => recipe.title.toLowerCase().includes(search.toLowerCase())).slice((currentPage -1) * recipesPerPage, currentPage * recipesPerPage).map(recipe => (
-                        <RecipeCard key={recipe.id} onDelete={handleDelete} recipe={recipe}/>
-                    ))}
-                </div>
-                <div className="flex gap-5 justify-center">
-                    <button
-                        onClick={() => setCurrentPage(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        className="my-5 px-4 py-2 rounded-lg cursor-pointer text-white bg-orange-500 hover:bg-orange-600 transition-colors text-sm disabled:opacity-50">
-                        Anterior
-                    </button>
-                    <button
-                        onClick={() => setCurrentPage(currentPage + 1)}
-                        disabled={currentPage * recipesPerPage >= recipes.length}
-                        className="my-5 px-4 py-2 rounded-lg cursor-pointer text-white bg-orange-500 hover:bg-orange-600 transition-colors text-sm disabled:opacity-50">
-                        Siguiente
-                    </button>
-                </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-gray-950">
+        <NavBar />
+        <div className="max-w-7xl mx-auto px-6 pt-28 pb-12">
+            <h2 className="text-3xl font-bold text-white mb-8">🔥 Películas populares</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {movies.map(movie => (
+                    <div
+                        key={movie.id}
+                        onClick={() => navigate(`/movie/${movie.id}`)}
+                        className="group cursor-pointer rounded-xl overflow-hidden backdrop-blur-sm bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all hover:scale-105">
+                        <img
+                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                            alt={movie.title}
+                            className="w-full object-cover"
+                        />
+                        <div className="p-3">
+                            <h3 className="text-white text-sm font-semibold line-clamp-1">{movie.title}</h3>
+                            <p className="text-purple-400 text-xs mt-1">⭐ {movie.vote_average.toFixed(1)}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <Footer />
         </div>
-    )
+    </div>
+)
 }
